@@ -58,11 +58,13 @@ export const Navbar: React.FC = () => {
 
   const handleNavClick = (id: string) => {
     setMobileMenuOpen(false);
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-      setActiveSection(id);
-    }
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        setActiveSection(id);
+      }
+    }, 100);
   };
 
   return (
