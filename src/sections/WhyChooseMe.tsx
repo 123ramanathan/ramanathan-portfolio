@@ -22,7 +22,7 @@ export const WhyChooseMe: React.FC = () => {
       title: 'Reusable Components',
       desc: 'Developing modular, parametric UI components and directives that accelerate feature rollouts and ease updates.',
       metric: 'DRY Architecture',
-      icon: <Package2 className="text-secondary" size={20} />
+      icon: <Package2 className="text-primary" size={20} />
     },
     {
       title: 'Responsive Design',
@@ -34,7 +34,7 @@ export const WhyChooseMe: React.FC = () => {
       title: 'Fast Delivery',
       desc: 'Organized execution with Agile iterations, providing functional increments and meeting strict milestone targets.',
       metric: 'On-Time Sprints',
-      icon: <Zap className="text-secondary" size={20} />
+      icon: <Zap className="text-primary" size={20} />
     },
     {
       title: 'SEO Friendly',
@@ -46,7 +46,7 @@ export const WhyChooseMe: React.FC = () => {
       title: 'Performance Optimized',
       desc: 'Lazy-loading routes, bundle chunking, compressing assets, and controlling change detection for high framerates.',
       metric: '<1s Load Time',
-      icon: <ShieldCheck className="text-secondary" size={20} />
+      icon: <ShieldCheck className="text-primary" size={20} />
     },
     {
       title: 'Pixel Perfect UI',
@@ -58,7 +58,7 @@ export const WhyChooseMe: React.FC = () => {
       title: 'Modern UX',
       desc: 'Creating smooth scroll physics, custom cursors, page loader sequences, and interactive states to impress users.',
       metric: 'Smooth Scroll',
-      icon: <Sparkles className="text-secondary" size={20} />
+      icon: <Sparkles className="text-primary" size={20} />
     }
   ];
 
@@ -90,7 +90,7 @@ export const WhyChooseMe: React.FC = () => {
                 <div>
                   {/* Icon & Metric */}
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-10 h-10 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center group-hover:bg-secondary/5 group-hover:border-secondary/30 transition-all duration-300">
+                    <div className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center group-hover:bg-secondary/5 group-hover:border-secondary/30 transition-all duration-300">
                       {tenet.icon}
                     </div>
                     <span className="text-[10px] font-mono font-bold tracking-wider px-2 py-0.5 rounded border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/5 text-[var(--color-text-muted)] group-hover:text-secondary group-hover:border-secondary/10 transition-colors">
