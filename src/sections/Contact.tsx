@@ -34,6 +34,7 @@ export const Contact: React.FC = () => {
     name: '',
     email: '',
     phone: '',
+    message: '',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,8 +47,8 @@ export const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email) {
-      alert('Please fill in required fields (Name and Email)');
+    if (!formData.name || !formData.email || !formData.message) {
+      alert('Please fill in required fields (Name, Email, and Email Content)');
       return;
     }
 
@@ -56,10 +57,22 @@ export const Contact: React.FC = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitStatus('success');
+
+      // Construct mailto link
+      const emailTo = 'ngksriram23111@gmail.com';
+      const subject = encodeURIComponent(`Message from ${formData.name}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || 'N/A'}\n\nMessage:\n${formData.message}`
+      );
+      
+      // Open email client
+      window.location.href = `mailto:${emailTo}?subject=${subject}&body=${body}`;
+
       setFormData({
         name: '',
         email: '',
         phone: '',
+        message: '',
       });
       // Clear toast after 5s
       setTimeout(() => setSubmitStatus('idle'), 5000);
@@ -143,6 +156,23 @@ export const Contact: React.FC = () => {
                     />
                   </div>
 
+                  {/* Email Content */}
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="message" className="text-xs font-display font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                      Email Content *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={5}
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Type your email content here..."
+                      className="px-4 py-3 rounded-lg border border-slate-200 dark:border-white/10 focus:border-primary bg-slate-100 dark:bg-white/5 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 outline-none transition-colors duration-300 w-full resize-none font-sans"
+                    />
+                  </div>
+
                   {/* Submit Button */}
                   <button
                     type="submit"
@@ -154,7 +184,7 @@ export const Contact: React.FC = () => {
                     ) : (
                       <>
                         <Send size={16} />
-                        Submit Request
+                        Send Email
                       </>
                     )}
                   </button>
@@ -168,7 +198,7 @@ export const Contact: React.FC = () => {
                         exit={{ opacity: 0 }}
                         className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium text-center"
                       >
-                        Your request has been sent successfully! I will contact you shortly.
+                        Opening your default email client...
                       </motion.div>
                     )}
                   </AnimatePresence>
